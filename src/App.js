@@ -37,7 +37,9 @@ export default function App() {
 
     if (value) {
       const filtered = items.filter((item) => {
-        return item.title.indexOf(e.target.value) > -1;
+        return item.title.toUpperCase().indexOf(e.target.value.toUpperCase()) > -1 ||
+          item.isbn.toUpperCase().indexOf(e.target.value.toUpperCase()) > -1 ||
+          item.authors.toUpperCase().indexOf(e.target.value.toUpperCase()) > -1
       });
 
       setItems(filtered);
