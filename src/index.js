@@ -4,5 +4,14 @@
  * Default output of this code is 'Hello world!' in console.
  */
 import App from './App';
+import ReactDOM from 'react-dom';
+import React from 'react';
 
-App();
+// App();
+
+ReactDOM.render(
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>,
+    document.getElementById('app')
+);
