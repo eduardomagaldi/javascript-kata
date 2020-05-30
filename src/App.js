@@ -1,5 +1,6 @@
 import React from 'react';
 import DataService from './services/Data.service';
+import './App.css';
 
 export default function App() {
   const [isLoaded, setIsLoaded] = React.useState(false);
@@ -56,6 +57,8 @@ export default function App() {
         <input
           type="text"
           onKeyUp={handleKeyUp}
+          placeholder="Search Author or Title or ISBN"
+          className="input-search"
           />
 
         <ul>
@@ -65,8 +68,6 @@ export default function App() {
               <strong>Authors:</strong> {item.authors}<br />
               <strong>Description:</strong> {item["description\r"]}<br />
               <strong>ISBN:</strong> {item.isbn}<br />
-              <br/>
-              <br/>
             </li>
           ))}
         </ul>
