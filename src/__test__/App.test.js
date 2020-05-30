@@ -1,11 +1,14 @@
 import App from '../App';
+import TestRenderer from 'react-test-renderer';
 
 describe('App()', () => {
-  it('should print hello world', () => {
-    const consoleSpy = jest.spyOn(console, 'log');
+  it('should render App component', () => {
+    const testRenderer = TestRenderer.create(<App />);
+    const testInstance = testRenderer.root;
 
-    App();
+    console.log('testInstance', testInstance);
 
-    expect(consoleSpy).toHaveBeenCalledWith('Hello world!');
+    expect(testInstance.findByType(SubComponent).props.foo).toBe('bar');
+    expect(testInstance.findByProps({ className: "sub" }).children).toEqual(['Sub']);
   })
 })
