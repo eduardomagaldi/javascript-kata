@@ -1,23 +1,21 @@
-const DataService = () => {
-  return {
-    fetchBooks: function() {
-      return fetch('/books.csv')
-        .then(response => response.text())
-        .then(csvJSON)
-        .catch(function (err) {
-          console.log('Fetch Error :-S', err);
-        });
-    },
-    fetchMagazines: function () {
-      return fetch('/magazines.csv')
-        .then(response => response.text())
-        .then(csvJSON)
-        .catch(function (err) {
-          console.log('Fetch Error :-S', err);
-        });
-    }
+const DataService = {
+  fetchBooks: function() {
+    return fetch('/books.csv')
+      .then(response => response.text())
+      .then(csvJSON)
+      .catch(handleErr);
+  },
+  fetchMagazines: function () {
+    return fetch('/magazines.csv')
+      .then(response => response.text())
+      .then(csvJSON)
+      .catch(handleErr);
   }
 };
+
+function handleErr(err) {
+  console.log('Fetch Error :-S', err);
+}
 
 function csvJSON(csv) {
   const lines = csv.split('\n')
